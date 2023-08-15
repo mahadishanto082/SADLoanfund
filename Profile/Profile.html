@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link rel="stylesheet" href="Profile.css">
+</head>
+
+<body>
+    <div class="main">
+        <h1 style="text-align: center; margin-top: 5px; font-size: 45px; color:rgb(3, 145, 3);">Profile</h1>
+        <table>
+            <tr>
+                <td>
+                    <h2 style="margin-left: 45px ; margin-top:0.02px">Name</h2>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="text" class="txn" placeholder="Your Name" required>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <h2 style="margin-left: 45px ; ">Email</h2>
+                </td>
+            </tr>
+            <tr>
+                <td><input type="email" class="txn" placeholder="Your email"></td>
+            </tr>
+            <tr>
+                <td>
+                    <h2 style="margin-left: 45px ;">Student ID</h2>
+                </td>
+            </tr>
+            <tr>
+                <td><input type="number" class="txn" placeholder="Your Student ID"></td>
+            </tr>
+            <tr>
+                <td>
+                    <h2 style="margin-left: 45px ;">Password</h2>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="input-box">
+                        <input type="password" class="txn" id="password" placeholder="Your Password" spellcheck="false" required>
+                        <img src="eye-close.png" id="togglePassword" onclick="togglePasswordVisibility()">
+                    </div>
+
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <a class="forgot">
+                        Forgot Your Password?
+                    </a>
+                </td>
+            </tr>
+            </td>
+            </tr>
+
+            <tr>
+                <td>
+
+                    <button class="btn1">Update</button>
+                </td>
+            </tr>
+
+
+        </table>
+    </div>
+
+    <script src=Profile.js></script>
+
+
+</body>
+
+
+</html>
