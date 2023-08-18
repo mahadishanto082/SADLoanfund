@@ -148,31 +148,40 @@ font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     border-radius: 10px;
     height: 28vh;
 }
-.items button{
-    height: 100%;
-    width: 30%;
-    background-color: rgba(0, 128, 0, 0.703);
-    color: white;
-    border: none;
-    font-weight: bold;
-    border-radius: 8px;
-    
-}
+
 
 .items button:hover{
-   background-color: green;
+   background-color: white;
    cursor: pointer;
     
 }
+.btn_view button {
+    background-color: green;
+    color: white;
+    border: none;
+    height: 40px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 5%;
+    margin-top: 2px;
+    
+  }
 
-.items .btn_donate{
-    color: green;
+ .btn_view button:hover {
+    background-color: darkgreen;
+  }
+
+.btn_view{
+    color: rgb(183, 87, 39);
     margin-top: 3%;
     height: 10vh;
     display: flex;
     justify-content: center;
 }
-
-footer{
-    background-color: aqua;
-}
+  
+ 

@@ -11,6 +11,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
     <link rel="stylesheet" href="style.css">
+    
+    
 </head>
 <body>
 
@@ -48,64 +50,47 @@
         <ul>
             <a href="#"><li>Home</li></a>
             <a href="#"><li>News</li></a>
-            <a href="../LoanFunded/Loan/loanReq.html"><li>Request Loan</li></a>
-            <a href="../LoanFunded/camp/campaign.php"><li>Running campaign</li></a>
+            <a href="loan/loanReq.html"><li>Request Loan</li></a>
+            <a href="../"><li>Running Campaign</li></a>
             <a href="#"><li>About</li></a>
             <a href="#"><li>Contact</li></a>
 
         </ul>
-    </nav>
+    </nav><br>
 
-    <div id="body">
-        <h2 id="title">Running campaigns</h2>
-        <div id="campaign">
-            <ol id="grid_container">
+    <div class="main">
+        <div class="left">
+            <h3>Requested Loan</h3>
+            <hr>
+            <ul id="loanList">
+                <li>Name: John, Amount: $100</li>
+                <li>Name: John, Amount: $100</li>
+                
+                
 
-                <li class="items">
+            </ul>
 
-                    <div class="img"><img src="../Dashboard/images/donation2.jpg"></div>
-                    <Label><b>Title:</b> Donation for poor chields</Label>
-                    <br>
-                    <br>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum amet eveniet dolorum, assumenda temporibus pariatur, recusandae fugit sapiente officiis eum reiciendis placeat, modi vitae commodi corrupti expedita vero quis architecto!
-                    
-                    <div id="btn_donate"><button>Donate</button></div>
-                </li>
+        </div>
+        <div class="center">
+            <h3>Running Campaign</h3>
+            <hr>
+            <ul id="campaignList">
+                <li>Name: John, Amount: $100</li>
+                <li>Name: John, Amount: $100</li>
+                <li>Name: John, Amount: $100</li>
+                <li>Name: John, Amount: $100</li>
+                <li>Name: John, Amount: $100</li>
+                
+                
+                
+            </ul>
 
-                <li class="items">
-                    <div class="img"><img src="../Dashboard/images/donation1.jpg"></div>
-                    <Label><b>Title:</b> Donation for poor chields</Label>
-                    <br>
-                    <br>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum amet eveniet dolorum, assumenda temporibus pariatur, recusandae fugit sapiente officiis eum reiciendis placeat, modi vitae commodi corrupti expedita vero quis architecto!
-                    
-                    <div id="btn_donate"><button>Donate</button></div>
-                </li>
-
-                <li class="items">
-
-                    <div class="img"><img src="../Dashboard/images/donation3.jpg"></div>
-                    <Label><b>Title:</b> Donation for poor chields</Label>
-                    <br>
-                    <br>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum amet eveniet dolorum, assumenda temporibus pariatur, recusandae fugit sapiente officiis eum reiciendis placeat, modi vitae commodi corrupti expedita vero quis architecto!
-                    
-                    <div id="btn_donate"><button>Donate</button></div>
-                </li>
-
-                <li class="items">
-
-                    <div class="img"><img src="../Dashboard/images/doantion4.jpg"></div>
-                    <Label><b>Title:</b> Donation for poor chields</Label>
-                    <br>
-                    <br>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum amet eveniet dolorum, assumenda temporibus pariatur, recusandae fugit sapiente officiis eum reiciendis placeat, modi vitae commodi corrupti expedita vero quis architecto!
-                    
-                    <div id="btn_donate"><button>Donate</button></div>
-                </li>
-            </ol>
+        </div>
+        <div class="right">
+            <div class="button-container">
+            <a href="loan/loanReq.html"><button class="loan">Apply for Loan</button><br></a>
+            <a href="campaign_form/campaign_form.html"><button class="camp">Create Campaign</button></a>
+            </div>
         </div>
     </div>
-
-</body>
 </html>
