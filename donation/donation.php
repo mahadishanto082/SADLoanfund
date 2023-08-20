@@ -1,37 +1,108 @@
 <?php
-if (isset($_POST['campaign_id'])) {
-    $campaignId = $_POST['campaign_id'];
+if (isset($_GET['campaign_id'])) {
+    $campaignId = $_GET['campaign_id'];
 
-    // Now you can use $campaignId to fetch and display campaign details
-    // Example: Retrieve campaign details from a database based on $campaignId
-    // Display the campaign details here
-    echo "This is campaign_details.php";
+    // Replace this with your actual code to retrieve campaign details from the database
+    // Example: Assuming you have a database connection and a campaigns table
+    $server = "localhost";
+    $username = "root";
+    $password = "";
+    $database = "loan_funded";
+
+    $conn = mysqli_connect($server, $username, $password, $database);
+    if (!$conn) {
+        die("Error: " . mysqli_connect_error());
+    }
+
+    // Query to fetch campaign details based on campaign_id
+    $query = "SELECT * FROM campaign_submissions WHERE id = $campaignId";
+    $result = mysqli_query($conn, $query);
+
+    if ($result && mysqli_num_rows($result) > 0) {
+        $campaign = mysqli_fetch_assoc($result);
+        
+        // Check if the logged-in user's ID matches the creator's ID
+        session_start(); // Start the session if not already started
+        $loggedInUserId = $_SESSION['id']; // Assuming you have this variable
+        $creatorId = $campaign['creator_id'];
+        
+        // Check if the logged-in user is the creator
+        $canDonate = ($loggedInUserId != $creatorId);
+    } else {
+        echo "Campaign not found.";
+    }
+
+    mysqli_close($conn); // Close the database connection
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Your HTML head content here -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="donation.css">
+    <link rel="stylesheet" href="donation_update.css">
     <title>Campaign Details</title>
 </head>
 <body>
-<h1 align="center">Campaign Details</h1>
-    <!-- Display campaign details using PHP variables here -->
+<div id="header">
+
+
+<div id="header_logo">
+
+    <div id="logo">
+        <img src="dashboard_logo.png" alt="" height="80px">
+        
+    </div>
+
+    <label>Loan and Fund <br> Raising</label>
+
+</div>
+
+<div id="out">
+    <a href="../login/logout.php" ><button class="logout" >Logout</button></a>
+</div>
+<div id="header_btn_container">
+    <ul>
+        <li>
+            <a href="#"><button id="profile"></button></a>
+        </li>
+        
+    </ul>
+</div>
+
+
+</div>
+
+<nav>
+<ul>
+    <a href="../dashboard/logged_dasboard.php"><li>Home</li></a>
+    <a href="#"><li>News</li></a>
+    <a href="../LoanReq/loanReq.html"><li>Request Loan</li></a>
+    <a href="/camp/campaign.php"><li>Running campaign</li></a>
+    <a href="#"><li>About</li></a>
+    <a href="#"><li>Contact</li></a>
+
+</ul>
+</nav>
+    <h1 align="center">Campaign Details</h1>
     <div id="box">
         <div class="top">
-    <div class="img">
-        <img src="child..jpg.jpg" alt="" width="250px;"  height="220px;">
-    </div>
+            <div class="img">
+                <img src="<?php echo $campaign['image']; ?>" alt="Campaign Image" width="250px" height="220px">
             </div>
-    <div class="foot">
-    <h3>Donation for child</h3>
-        <table >
-            <tr><td class="des"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum amet eveniet dolorum, assumenda temporibus pariatur, recusandae fugit sapiente officiis eum reiciendis placeat, modi vitae commodi corrupti expedita vero quis architecto!</td></tr>
-            <tr><td> <a href="#"><button class="btn-donate" >Donate</button></a></td></tr>
-        
-        </table>
+        </div>
+        <div class="foot">
+            <h3><?php echo $campaign['title']; ?></h3>
+            <table>
+                <tr><td class="des"><?php echo $campaign['description']; ?></td></tr>
+                <?php if ($canDonate) { ?>
+                <tr><td><a href="../donation form/donation_form.php"><button class="btn-donate">Donate</button></a></td></tr>
+                <?php } else { ?>
+                <tr><td>Cannot donate to your own campaign.</td></tr>
+                <?php } ?>
+            </table>
         </div>
     </div>
 </body>
