@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $title = $_POST["title"];
     $date = $_POST["date"];
@@ -29,8 +31,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (in_array(strtolower($imageFileType), $allowedFormats)) {
         if (move_uploaded_file($_FILES["picture"]["tmp_name"], $targetFilePath)) {
             // Insert data into the table
-            $sql = "INSERT INTO campaign_submissions (title, date, description, fullname, studentid, email, phone, image)
-                    VALUES ('$title', '$date', '$description', '$fullname', '$studentid', '$email', '$phone', '$imageName')";
+        // Assuming you have a logged-in user's ID stored in $_SESSION['id']
+        $creatorId = $_SESSION['id'];
+
+        $sql = "INSERT INTO campaign_submissions (title, date, description, fullname, studentid, email, phone, image, creator_id)
+        VALUES ('$title', '$date', '$description', '$fullname', '$studentid', '$email', '$phone', '$imageName', '$creatorId')";
+
 
             if ($conn->query($sql) === TRUE) {
                 echo "<h1>Thank you for submitting the form!</h1>";
