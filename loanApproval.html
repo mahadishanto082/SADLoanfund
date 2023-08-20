@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    .card {
+      border: 1px solid #ccc;
+      padding: 20px;
+      width: 500px;
+      margin: 0 auto;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+      border-radius: 5px;
+    }
+
+    h2 {
+      margin-top: 0;
+      font-size: 24px;
+      text-align: center;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 8px;
+      text-align: center;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+
+    .approve-button, .reject-button {
+      padding: 5px 10px;
+      cursor: pointer;
+      border: none;
+      border-radius: 3px;
+    }
+
+    .approve-button {
+      background-color: #28a745;
+      color: #fff;
+    }
+
+    .reject-button {
+      background-color: #dc3545;
+      color: #fff;
+    }
+  </style>
+  <title>Loan Approval</title>
+</head>
+<body>
+  <div class="card">
+    <h2>Loan Approval</h2>
+    <table>
+      <tr>
+        <th>Student</th>
+        <th>Loan Amount</th>
+        <th>Status</th>
+        <th>Action</th>
+      </tr>
+      <tr>
+        <td>John</td>
+        <td>10,000 tk</td>
+        <td>Pending</td>
+        <td>
+          <button class="approve-button">Approve</button>
+          <button class="reject-button">Reject</button>
+        </td>
+      </tr>
+      <!-- Add more loan requests here -->
+    </table>
+  </div>
+
+  <script>
+    const approveButtons = document.querySelectorAll('.approve-button');
+    const rejectButtons = document.querySelectorAll('.reject-button');
+
+    approveButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const studentName = button.closest('tr').querySelector('td:nth-child(1)').textContent;
+        console.log(`Approving loan for ${studentName}`);
+        // Implement backend functionality here 
+        simulateStatusChange(button, 'Approved');
+      });
+    });
+
+    rejectButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const studentName = button.closest('tr').querySelector('td:nth-child(1)').textContent;
+        console.log(`Rejecting loan for ${studentName}`);
+        // Implement backend functionality here 
+        simulateStatusChange(button, 'Rejected');
+      });
+    });
+
+    function simulateStatusChange(button, newStatus) {
+      const row = button.closest('tr');
+      const statusCell = row.querySelector('td:nth-child(3)');
+      statusCell.textContent = newStatus;
+      button.disabled = true;
+    }
+  </script>
+</body>
+</html>
