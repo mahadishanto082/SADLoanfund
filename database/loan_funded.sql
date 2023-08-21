@@ -149,3 +149,14 @@ CREATE TABLE IF NOT EXISTS loan_requests (
     email VARCHAR(255) NOT NULL,
     phone VARCHAR(20) NOT NULL
 );
+CREATE TABLE campaign_submissions (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(255) NOT NULL,
+    date DATE NOT NULL,
+    description TEXT,
+    fullname VARCHAR(255),
+    studentid VARCHAR(10),
+    email VARCHAR(255),
+    phone VARCHAR(20),
+    image VARCHAR(255) -- Add a new column for the image
+);
